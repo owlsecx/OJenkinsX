@@ -18,7 +18,7 @@
 
 ## 📌 Overview
 
-Offline Jenkins controller configuration auditor
+OJenkinsX — Offline Jenkins Controller Auditor. It provides offline JENKINS_HOME auditor — no network, no API, strictly read-only, never decrypts any secret; Hardened XML loader — refuses DOCTYPE / ENTITY, size-capped, XML 1.1 declaration tolerant. Built-in demo/self-test paths and severity gates help validate detections without touching production when those flags are used.
 
 ---
 
@@ -26,18 +26,10 @@ Offline Jenkins controller configuration auditor
 
 - Offline JENKINS_HOME auditor — no network, no API, strictly read-only, never decrypts any secret
 - Hardened XML loader — refuses DOCTYPE / ENTITY, size-capped, XML 1.1 declaration tolerant
-- Global config.xml checks — useSecurity, realm, authorization strategy, anonymous read, matrix grants, CSRF crumb issuer, agent protocols, agent port, remember-me, raw-HTML markup, controller executors, signup, agent→controller kill switch
+- Global config.xml checks — useSecurity, realm, authorization strategy, anonymous read, matrix grants, CSRF crumb issuer, agent protocols, agent port, remember-me, raw-HTML markup, controller executors, signup, agent→cont
 - Location config (http:// URL), CLI, API token policy, initialAdminPassword leftovers
 - credentials.xml plaintext vs encrypted secrets, secrets/ + master.key + hudson.util.Secret perms
 - users/*/config.xml — legacy API tokens, admin count, non-bcrypt password hashes
-- jobs/**/config.xml — curl|bash, hardcoded secrets (masked), parameter injection, sandbox disabled, system Groovy, controller builds, fork PR trust
-- scriptApproval.xml dangerous signature analysis
-- plugins/*.jpi|.hpi manifest versions vs built-in known-vulnerable table; jenkins.war core CVEs/EOL
-- JCasC jenkins.yaml and init.groovy.d review
-- CWE / CVE / MITRE ATT&CK mapping, score & grade
-- Export TXT / Markdown / JSON / CSV / SARIF
-- Self-verifying --demo (weak + hardened homes)
-- Full CLI mode (--home, --fail-on, --explain ...)
 
 ---
 
@@ -51,7 +43,10 @@ Offline Jenkins controller configuration auditor
 ## 🚀 Usage
 
 ```bash
-./OJenkinsX
+./OJenkinsX                                     # interactive menu
+./OJenkinsX --home /var/lib/jenkins --scan
+./OJenkinsX --demo
+./OJenkinsX --help
 ```
 
 ---
